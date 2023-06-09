@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient( 
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    */
+     font-size:1em;
+     background-color: #f1f1f1;
+     margin: 0;
+     min-height: 100vh;
+     /* color:#3C66A0; */
+}
+
+/* Style.css or global.css */
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 7px solid black;
+  border-top: 7px solid #EEF6FF;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*
+@layer base{
+  body{
+    @apply bg-black;
+  }
+}
+*/
+@layer components{
+  .hoverAnimation{
+    @apply hover:bg-[#d9d9d9] hover:bg-opacity-10 rounded-full cursor-pointer  h-[52px] xl:w-auto xl:h-auto xl:py-3 xl:px-4 transition duration-200 ease-out;
+  }
+
+  .icon {
+    @apply cursor-pointer text-xl w-9 h-9 hover:bg-[#1d9bf0] hover:bg-opacity-10 flex items-center justify-center rounded-full transition ease-out;
+  }
+
+  .blueicon {
+    @apply cursor-pointer text-xl w-9 h-9 bg-[#3C66A0] text-white flex items-center justify-center rounded-md transition ease-out;
+  }
+
+  .btn{
+    @apply bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default;
+  }
+
+  .smallpic{
+    @apply h-11 w-11 rounded-full mr-4;
+  }
+
+  .logopic{
+    @apply h-11 w-11 mr-4;
+  }
+
+  .followbtn {
+    @apply ml-auto bg-black text-white rounded-full font-bold text-sm py-1.5 px-3.5;
+  }
+}
+
