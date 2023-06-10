@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 //import useLocalStorage from "./hooks/uselocalstorage";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
+import './css/App.css'
 //import Profile from "./pages/profile";
 // import LandingNav from "./components/landingnav";
 // import Sectionb from "./components/sectionb";

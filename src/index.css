@@ -1,6 +1,13 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,900;1,500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Josefin+Sans:ital,wght@0,200;0,500;0,600;0,700;1,500&family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,700;1,900&family=Montserrat:wght@100;200;400;600;700;900&family=Mukta:wght@200;300;500;700;800&family=Nunito+Sans:ital,wght@0,200;0,400;0,600;0,800;1,400;1,800&family=Poppins:ital,wght@0,100;0,400;0,600;0,900;1,500&family=Prompt:wght@100;300;500;600;700;800&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -21,7 +28,7 @@ html{
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
   /* background: linear-gradient( 
       to bottom,
       transparent,
@@ -30,7 +37,7 @@ body {
     rgb(var(--background-start-rgb));
     */
      font-size:1em;
-     background-color: #f1f1f1;
+     background-color:black;
      margin: 0;
      min-height: 100vh;
      /* color:#3C66A0; */
@@ -65,7 +72,7 @@ body {
   }
 }
 */
-@layer components{
+/* @layer components{
   .hoverAnimation{
     @apply hover:bg-[#d9d9d9] hover:bg-opacity-10 rounded-full cursor-pointer  h-[52px] xl:w-auto xl:h-auto xl:py-3 xl:px-4 transition duration-200 ease-out;
   }
@@ -94,4 +101,4 @@ body {
     @apply ml-auto bg-black text-white rounded-full font-bold text-sm py-1.5 px-3.5;
   }
 }
-
+ */
