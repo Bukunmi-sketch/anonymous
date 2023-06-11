@@ -140,203 +140,136 @@ function Signup() {
 
     return (
         <>
-            {signUpEmail ? (
-                <AnimatePresence>
-                    <motion.main
-                        key="main"
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 100 }}
-                        transition={{ duration: 0.5 } } className="auth">
+
+            <AnimatePresence>
+                <motion.main
+                    key="main"
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 100 }}
+                    transition={{ duration: 0.5 }} className="auth">
 
                     <div className="form-container">
-                        <form onSubmit={handleEmailRegisterSubmit} >
-                            <div className="mobile-phone">
-                                <span onClick={() => setSignupEmail(!signUpEmail)}> Sign up with Mobile No Instead  </span>
-                            </div>
-                            <div className="errorinfo"></div>
-
-                            <div className="namebox">
-                                <label htmlFor="Name">Username </label>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    value={userinputs.username || ""}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div className="flexnameboxa">
-                                <div className="namebox">
-                                    <label htmlFor="email">Email Address</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={userinputs.email || ""}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                                <div className="namebox">
-                                    <label htmlFor="address">Country</label>
-                                    <select name="country" onChange={handleChange} required>
-                                        {countries.map((option) => (
-                                            <option
-                                                key={option}
-                                                value={option}
-                                                onChange={handleChange}
-                                            >
-                                                {option}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="namebox">
-                                <label htmlFor="address"> Password </label>
-
-                                {showPassword ? (
-                                    <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className='eye-icon' />
-                                ) : (
-                                    <EyeIcon onClick={() => setShowPassword(!showPassword)} className='eye-icon' />
-                                )}
-
-                                <input type={showPassword ? 'text' : 'password'}
-                                    name="password"
-                                    value={userinputs.password || ""}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div className="namebox">
-                                <label htmlFor="address"> Confirm Password </label>
-                                <input
-                                    type="text"
-                                    name="confirmpass"
-                                    value={userinputs.confirmpass || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div className="namebox">
-                                <div style={{ color: "#FF6600" }}> {Errormsg} </div>
-                                <button type="submit" className="checkout-btn bg-red-800">
-                                    Sign up with email
-                                </button>
-                            </div>
-
-                            <div className="have-account">
-                                Already have an account ?{" "}
-                                <button>Login</button>
-                            </div>
-                        </form>
+                        <div className="namebox">
+                            <button type="submit" className="checkout-btn"> <FaApple/> Sign up with Apple </button>
                         </div>
-                        {/* -----------------------------------END OF CONTAINER -------------------------------- */}
-                    </motion.main>
-                </AnimatePresence>
-            ) : (
 
-                <AnimatePresence>
-                    <motion.main
-                        key="main"
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 100 }}
-                        transition={{ duration: 0.5 }} className={`min-h-[50vh] overflow-hidden w-[100%] flex justify-center md:text-lg mt-[70px] font-bold border bg-[#f1f1f1] md:flex-row `}>
-
-                        {/* CONTAINER BOX */}
-
-                        <section className="flex w-[100%] flex-col items-center relative bg-white md:flex-row md:h-[80%] md:mt-[20px] sm:w-[70%] md:w-[80%]  ">
-                            {/* FIRST BOX */}
-                            <div className='flex flex-col items-center h-full  w-full   md:w-[50%] '>
-                                <h3 className='mt-3 text-md'>Create a New Account</h3>
-
-                                <div className='flex flex-col   p-6 w-full'>
-                                    <div className='flex flex-col  mb-10 flex-1 '>
-                                        <button className=' flex justify-center items-center gap-x-4 border border-[#000] p-4 rounded-lg cursor-pointer  font-bold ' > <FaGoogle className='h-6 w-7' />  Signup with Google</button>
-                                    </div>
-
-                                    <div className='flex flex-col  mb-10 flex-1 '>
-                                        <button className='flex justify-center items-center gap-x-4 border border-[#cecece] p-4 rounded-lg cursor-pointer bg-black text-white font-bold'> <FaApple className='h-6 w-7' /> Signup with Apple </button>
-                                    </div>
-
-                                    <div className="mobilePhone">
-                                        <span onClick={() => setSignupEmail(!signUpEmail)}> Sign up with Mobile No Instead  </span>
-                                    </div>
-
-                                    <div className='flex flex-col justify-center items-center mb-10 flex-1 '>
-                                        <p>OR</p>
-                                    </div>
-
-
-                                    <form onSubmit={handleMobileRegisterSubmit} >
-                                        <div>{Errormsg}</div>
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <label className='font-bold'>Firstname</label>
-                                            <input type='text' name="username" value={userinputs.username || ""} onChange={handleChange} className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none ' required />
-
-                                        </div>
-                                        {/* {signUpEmail ? ( */}
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <label className='font-bold'>Email</label>
-                                            <input type='email' name="email" value={userinputs.email || ""} onChange={handleChange} className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none ' required />
-
-                                        </div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <label className='font-bold'> Country </label>
-                                            <select name="country" onChange={handleChange} required className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none '>
-                                                {countries.map((option) => (<option key={option} value={option} onChange={handleChange} > {option} </option>))}
-                                            </select>
-
-                                        </div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 relative'>
-                                            <label className='font-bold'>Password</label>
-                                            {showPassword ? (
-                                                <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className='icon absolute mt-[40px] ml-[90%]' />
-                                            ) : (
-                                                <EyeIcon onClick={() => setShowPassword(!showPassword)} className='icon absolute mt-[40px] ml-[90%] ' />
-                                            )}
-
-                                            <input type={showPassword ? 'text' : 'password'} placeholder='password' name='password' value={userinputs.password || ""} onChange={handleChange} className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none ' />
-                                        </div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <button className='bg-[#3C66A0] text-white text-md py-4 px-4 border border-solid border-[#3C66A0] rounded-lg font-bold' > Continue </button>
-                                        </div>
-                                        {/* <Link href="/customize">Continue </Link> */}
-                                    </form>
-
-
+                        <div className="namebox">
+                            <button type="submit" className="checkout-btn"> <FaGoogle/> Sign up with Google </button>
+                        </div>
+                        {signUpEmail ? (
+                            <form onSubmit={handleEmailRegisterSubmit} >
+                                <div className="mobile-phone">
+                                    <span onClick={() => setSignupEmail(!signUpEmail)}> Sign up with Mobile No Instead  </span>
                                 </div>
-                            </div>
+                                <div className="errorinfo"></div>
 
-                            {/* -----------------------------------END OF FIRST BOX -------------------------------- */}
-
-                            {/* -----------------------------------SECOND  BOX -------------------------------- */}
-                            <div className=' flex-col h-full hidden md:w-[50%] md:flex '>
-                                <div className='w-full mt-[-150px] flex-shrink-0 rounded-xl relative'>
-                                    <img src='' alt="healthworker" className='h-[400px] rounded-xl shadow-xl w-full' />
+                                <div className="namebox">
+                                    <label htmlFor="Name">Username </label>
+                                    <input type="text" name="username" value={userinputs.username || ""} onChange={handleChange} required />
                                 </div>
-                                <div className=' mt-2.5 rounded-xl relative'>
-                                    <img src='' alt="healthworker" className='h-[400px] flex-shrink-0 rounded-xl shadow-xl w-full' />
+
+                                <div className="flexnameboxa">
+                                    <div className="namebox">
+                                        <label htmlFor="email">Email Address</label>
+                                        <input type="email" name="email" value={userinputs.email || ""} onChange={handleChange} required />
+                                    </div>
+
+                                    <div className="namebox">
+                                        <label htmlFor="address">Country</label>
+                                        <select name="country" onChange={handleChange} required>
+                                            {countries.map((option) => (<option key={option} value={option} onChange={handleChange} > {option} </option>))}
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* -----------------------------------END OF SECOND  BOX -------------------------------- */}
+                                <div className="namebox">
+                                    <label htmlFor="address"> Password </label>
 
-                        </section>
+                                    {showPassword ? (
+                                        <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className='eye-icon' />
+                                    ) : (
+                                        <EyeIcon onClick={() => setShowPassword(!showPassword)} className='eye-icon' />
+                                    )}
 
-                        {/* -----------------------------------END OF CONTAINER -------------------------------- */}
-                    </motion.main>
-                </AnimatePresence>
+                                    <input type={showPassword ? 'text' : 'password'} name="password" value={userinputs.password || ""} onChange={handleChange} required />
+                                </div>
 
-            )}
+                                <div className="namebox">
+                                    <label htmlFor="address"> Confirm Password </label>
+                                    <input type="text" name="confirmpass" value={userinputs.confirmpass || ""} onChange={handleChange} />
+                                </div>
+
+                                <div className="namebox">
+                                    <div style={{ color: "#FF6600" }}> {Errormsg} </div>
+                                    <button type="submit" className="checkout-btn bg-red-800"> Sign up with email </button>
+                                </div>
+
+                                <div className="have-account">
+                                    Already have an account ? <span>Login</span>
+                                </div>
+                            </form>
+
+
+                        ) : (
+                            <form onSubmit={handleMobileRegisterSubmit} >
+                                <div className="mobile-phone">
+                                    <span onClick={() => setSignupEmail(!signUpEmail)}> Sign up with Email Instead  </span>
+                                </div>
+                                <div className="errorinfo"></div>
+
+                                <div className="namebox">
+                                    <label htmlFor="Name">Username </label>
+                                    <input type="text" name="username" value={userinputs.username || ""} onChange={handleChange} required />
+                                </div>
+
+                                <div className="flexnameboxa">
+                                    <div className="namebox">
+                                        <label htmlFor="mobile No"> Mobile No</label>
+                                        <input type="number" name="mobileno" value={userinputs.email || ""} onChange={handleChange} required />
+                                    </div>
+
+                                    <div className="namebox">
+                                        <label htmlFor="address">Country</label>
+                                        <select name="country" onChange={handleChange} required>
+                                            {countries.map((option) => (<option key={option} value={option} onChange={handleChange} > {option} </option>))}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="namebox">
+                                    <label htmlFor="address"> Password </label>
+
+                                    {showPassword ? (
+                                        <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className='eye-icon' />
+                                    ) : (
+                                        <EyeIcon onClick={() => setShowPassword(!showPassword)} className='eye-icon' />
+                                    )}
+
+                                    <input type={showPassword ? 'text' : 'password'} name="password" value={userinputs.password || ""} onChange={handleChange} required />
+                                </div>
+
+                                <div className="namebox">
+                                    <label htmlFor="address"> Confirm Password </label>
+                                    <input type="text" name="confirmpass" value={userinputs.confirmpass || ""} onChange={handleChange} />
+                                </div>
+
+                                <div className="namebox">
+                                    <div style={{ color: "#FF6600" }}> {Errormsg} </div>
+                                    <button type="submit" className="checkout-btn"> Sign up with Mobile </button>
+                                </div>
+
+                                <div className="have-account">
+                                    Already have an account ? <span>Login</span>
+                                </div>
+                            </form>
+
+                        )}
+                    </div>
+                    {/* -----------------------------------END OF CONTAINER -------------------------------- */}
+                </motion.main>
+            </AnimatePresence>
+
 
         </>
     );
