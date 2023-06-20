@@ -202,7 +202,7 @@ function Signup() {
 
                                 <div className="namebox">
                                     <div style={{ color: "#FF6600" }}> {Errormsg} </div>
-                                    <button type="submit" className="checkout-btn bg-red-800"> Sign up with email </button>
+                                    <button type="submit" className="checkout-btn "> Sign up with email </button>
                                 </div>
 
                                 <div className="have-account">
@@ -237,6 +237,9 @@ function Signup() {
                                     </div>
                                 </div>
 
+                            
+
+
                                 <div className="namebox">
                                     <label htmlFor="address"> Password </label>
 
@@ -248,6 +251,11 @@ function Signup() {
 
                                     <input type={showPassword ? 'text' : 'password'} name="password" value={userinputs.password || ""} onChange={handleChange} required />
                                 </div>
+
+                                {/* <div className='flex flex-col  mb-10 flex-1 '>
+                                <label className='font-bold'>Ema</label>
+                                <input type='email' placeholder='Email' className=' border border-[#cecece] p-2 m-4 flex-1 rounded-[30px]  bg-white text-black outline-none ' required/>
+                               </div> */}
 
                                 <div className="namebox">
                                     <label htmlFor="address"> Confirm Password </label>

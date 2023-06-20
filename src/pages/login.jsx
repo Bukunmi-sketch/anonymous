@@ -30,7 +30,7 @@ function Login() {
 
 
     const [showPassword, setShowPassword] = useState(false);
-    const [LoginEmail, setLoginEmail] = useState(false);
+    const [LoginEmail, setLoginEmail] = useState(true);
     // const [openSidebar, setOpenSidebar] = useState(false);
     // const [loading, setLoading] = useState(false);
 
@@ -142,103 +142,97 @@ function Login() {
         <>
             {LoginEmail ? (
                 <AnimatePresence>
-                    <motion.main
-                        key="main"
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 100 }}
-                        transition={{ duration: 0.5 }} className={`min-h-[50vh] overflow-hidden w-[100%] flex justify-center md:text-lg mt-[70px] font-bold border bg-[#f1f1f1] md:flex-row `}>
-
+                <motion.main
+                  key="main"
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 100 }}
+                  transition={{ duration: 1 }} className={`h-[600px] overflow-hidden w-[100%] flex justify-center md:text-lg mt-[70px] bg-[#f1f1f1]    md:flex-row `}>
+        
                         {/* CONTAINER BOX */}
-
-                        <section className="flex w-[100%] flex-col items-center relative bg-white md:flex-row md:h-[80%] md:mt-[20px] sm:w-[70%] md:w-[80%]  ">
+        
+                        <section className="flex w-[100%] flex-col items-center relative  md:flex-row  sm:w-[70%] text-[#3C66A0] ">
                             {/* FIRST BOX */}
-                            <div className='flex flex-col items-center h-full  w-full   md:w-[50%] '>
-                                <h3 className='mt-3 text-md'>Create a New Account</h3>
-
-                                <div className='flex flex-col   p-6 w-full'>
-                                    <div className='flex flex-col  mb-10 flex-1 '>
-                                        <button className=' flex justify-center items-center gap-x-4 border border-[#000] p-4 rounded-lg cursor-pointer  font-bold ' > <FaGoogle className='h-6 w-7' />  Signup with Google</button>
+                            <div className='flex flex-col items-center h-full md:mt-[20px] w-full bg-white  md:w-[80%] xl:w-[50%] '>
+                                {/* <h3 className='mt-3 text-2xl font-bold'> Users Login</h3> */}
+        
+                                <div className='flex flex-col    p-6 w-full'>
+        
+                                    <div className='flex flex-col gap-x-6'>
+                                        <div className='flex flex-col  mb-5 flex-1 '>
+        
+                                            <button className=' flex justify-center items-center gap-x-4 border border-[#000] p-2 rounded-[3px] cursor-pointer text-black  font-bold '> <FaGoogle className='h-6 w-7'/>  Login with Google</button>
+                                        </div>
+        
+                                        <div className='flex flex-col  mb-5 flex-1 '>
+                                            <button className='flex justify-center items-center gap-x-4 border border-[#cecece] p-2 rounded-[3px] cursor-pointer bg-black text-white font-bold'> <FaApple className='h-6 w-7'/>  Login with Apple </button>
+                                        </div>
                                     </div>
-
-                                    <div className='flex flex-col  mb-10 flex-1 '>
-                                        <button className='flex justify-center items-center gap-x-4 border border-[#cecece] p-4 rounded-lg cursor-pointer bg-black text-white font-bold'> <FaApple className='h-6 w-7' /> Signup with Apple </button>
+        
+                                    <div className='flex flex-col  mb-5 flex-1 '>
+                                        <label className='font-bold'>Email</label>
+                                        <input type='email' placeholder='Email' className=' border border-[#cecece] p-2 flex-1 rounded-lg  bg-white text-black outline-none ' required/>
                                     </div>
-
-                                    <div className="mobilePhone">
-                                        <span onClick={() => setLoginEmail(!LoginEmail)}> Login with Mobile No Instead  </span>
+        
+                                    <div className='flex flex-col  mb-3 flex-1 relative'>
+                                        <label className='font-bold'>Password</label>
+                                        {showPassword ? (
+                                            <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className='icon absolute mt-[40px] ml-[90%]' />
+                                        ) : (
+                                            <EyeIcon onClick={() => setShowPassword(!showPassword)} className='icon absolute mt-[40px] ml-[90%]' />
+                                        )}
+                                        <input type={ showPassword ? 'text' : 'password'} placeholder='Password' className=' border text-black border-[#cecece] p-2 flex-1 rounded-[4px]  bg-white outline-none ' required/>
                                     </div>
-
-                                    <div className='flex flex-col justify-center items-center mb-10 flex-1 '>
-                                        <p>OR</p>
+        
+                                    <div className='mb-5 text-center flex flex-col justify-end items-end'>
+                                        <p className='font-bold'> Forgot Password ? </p>
                                     </div>
-
-
-                                    <form onSubmit={handleEmailRegisterSubmit} >
-
-                                        <div>{Errormsg}</div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <label className='font-bold'>Firstname</label>
-                                            <input type='text' name="username" value={userinputs.username || ""} onChange={handleChange} className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none ' required />
-
-                                        </div>
-                                        {/* {LoginEmail ? ( */}
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <label className='font-bold'>Email</label>
-                                            <input type='email' name="email" value={userinputs.email || ""} onChange={handleChange} className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none ' required />
-
-                                        </div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <label className='font-bold'> Country </label>
-                                            <select name="country" onChange={handleChange} required className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none '>
-                                                {countries.map((option) => (<option key={option} value={option} onChange={handleChange} > {option} </option>))}
-                                            </select>
-
-                                        </div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 relative'>
-                                            <label className='font-bold'>Password</label>
-                                            {showPassword ? (
-                                                <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className='icon absolute mt-[40px] ml-[90%]' />
-                                            ) : (
-                                                <EyeIcon onClick={() => setShowPassword(!showPassword)} className='icon absolute mt-[40px] ml-[90%] ' />
-                                            )}
-
-                                            <input type={showPassword ? 'text' : 'password'} placeholder='password' name='password' value={userinputs.password || ""} onChange={handleChange} className=' border border-[#cecece] p-4 flex-1 rounded-lg  bg-white outline-none ' />
-                                        </div>
-
-                                        <div className='flex flex-col  mb-10 flex-1 '>
-                                            <button className='bg-[#3C66A0] text-white text-md py-4 px-4 border border-solid border-[#3C66A0] rounded-lg font-bold' > Continue </button>
-                                        </div>
-                                        {/* <Link href="/customize">Continue </Link> */}
-                                    </form>
-
-
+        
+        
+        
+                                    <div className='flex flex-col  mb-5 flex-1 '>
+                                        <button  className='bg-[#3C66A0] text-white text-md py-2 px-4 border border-solid border-[#3C66A0] rounded-[4px] font-bold'> Login </button>
+                                    </div>
+        
+                                    <div className='mb-5 text-center flex flex-col justify-center items-center'>
+                                        <p>New Users ? <b>Create Account </b>  </p>
+                                    </div>
+        
+        
                                 </div>
                             </div>
-
+        
                             {/* -----------------------------------END OF FIRST BOX -------------------------------- */}
-
+        
                             {/* -----------------------------------SECOND  BOX -------------------------------- */}
-                            <div className=' flex-col h-full hidden md:w-[50%] md:flex '>
-                                <div className='w-full mt-[-150px] flex-shrink-0 rounded-xl relative'>
-                                    <img src='' alt="healthworker" className='h-[400px] rounded-xl shadow-xl w-full' />
+                            {/* <div className='hidden xl:flex text-[#3B6FBA] justify-center items-center flex-col h-full bg-[#CBCCE8] m-2.5 border border-gray-300  md:w-[50%] p-24'>
+                                <div className='bg-white p-24 rounded-xl'>
+                                    <h3 className='font-bold text-2xl'>TAKE A STEP</h3>
+                                    <ul className=' list-disc'>
+                                        <li>Highly trusted rating system </li>
+                                        <li>On-time payments </li>
+                                        <li>flexible working hours</li>
+                                        <li> Freedom to choose any project </li>
+                                    </ul>
+                                </div>
+                            </div> */}
+        
+                            <div className=' flex-col h-full  m-2.5  hidden md:w-[50%] md:flex '>
+                                <div className='w-full  mt-2.5 flex-shrink-0 rounded-xl relative'>
+                                    <img  alt="healthworker" className='h-[400px] rounded-xl flex-shrink-0 shadow-xl w-full' />
                                 </div>
                                 <div className=' mt-2.5 rounded-xl relative'>
-                                    <img src='' alt="healthworker" className='h-[400px] flex-shrink-0 rounded-xl shadow-xl w-full' />
+                                    <img  alt="healthworker" className='h-[400px] flex-shrink-0 rounded-xl shadow-xl w-full' />
                                 </div>
                             </div>
-
+        
                             {/* -----------------------------------END OF SECOND  BOX -------------------------------- */}
-
+        
                         </section>
-
+        
                         {/* -----------------------------------END OF CONTAINER -------------------------------- */}
-                    </motion.main>
-                </AnimatePresence>
-            ) : (
+                        </motion.main>
+              </AnimatePresence>            ) : (
 
                 <AnimatePresence>
                     <motion.main
@@ -256,19 +250,19 @@ function Login() {
                                 <h3 className='mt-3 text-md'>Create a New Account</h3>
 
                                 <div className='flex flex-col   p-6 w-full'>
-                                    <div className='flex flex-col  mb-10 flex-1 '>
-                                        <button className=' flex justify-center items-center gap-x-4 border border-[#000] p-4 rounded-lg cursor-pointer  font-bold ' > <FaGoogle className='h-6 w-7' />  Signup with Google</button>
+                                    <div className='flex flex-col  mb-5 flex-1 '>
+                                        <button className=' flex justify-center items-center gap-x-4 border border-[#000] p-2 rounded-[3px] cursor-pointer  font-bold ' > <FaGoogle className='h-6 w-7' />  Signup with Google</button>
                                     </div>
 
-                                    <div className='flex flex-col  mb-10 flex-1 '>
-                                        <button className='flex justify-center items-center gap-x-4 border border-[#cecece] p-4 rounded-lg cursor-pointer bg-black text-white font-bold'> <FaApple className='h-6 w-7' /> Signup with Apple </button>
+                                    <div className='flex flex-col  mb-5 flex-1 '>
+                                        <button className='flex justify-center items-center gap-x-4 border border-[#cecece] p-2 rounded-[3px] cursor-pointer bg-black text-white font-bold'> <FaApple className='h-6 w-7' /> Signup with Apple </button>
                                     </div>
 
                                     <div className="mobilePhone">
                                         <span onClick={() => setLoginEmail(!LoginEmail)}> Login with Mobile No Instead  </span>
                                     </div>
 
-                                    <div className='flex flex-col justify-center items-center mb-10 flex-1 '>
+                                    <div className='flex flex-col justify-center items-center mb-5 flex-1 '>
                                         <p>OR</p>
                                     </div>
 
