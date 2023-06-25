@@ -1,13 +1,15 @@
-// import React, { useState, useEffect } from "react";
+ import  {  useEffect } from "react";
 // import { Routes, Route } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+ import { useNavigate  } from "react-router-dom";
 // import axios from "axios";
 // import Signup from './signup';
+//import Login from './login';
 import Homeheader from "../components/homeheader";
 import Leftbar from "../components/leftbar";
 import Middle from "../components/middle";
 import Rightbar from "../components/rightbar";
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
+// import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
+
 import Cookies from 'js-cookie'
 
 
@@ -17,7 +19,18 @@ import '../css/home.css'
 
 
 
+
 function Home() {
+  const navigate = useNavigate();
+ 
+  useEffect(()=>{
+     const token= Cookies.get('token');
+ if(!token){
+  navigate('/login');
+ }
+    }, [navigate]); 
+
+  //const [UserToken, setUserToken] = useState(Cookies.get('token'));
 
     /*
   const [cartdisplay, setcartdisplay]=useState({ left:"-70%",transition: "0.3s" });
@@ -55,24 +68,21 @@ function Home() {
           
 */
 
- /*
-    if(!token){
-        return <Signup/>
-    }
-*/
-    return ( 
-      <div className="home">
-        <Homeheader />
-        <main>
-          <div className="container">
-            <Leftbar />
-            <Middle />
-            <Rightbar />
-          </div>
-        </main>
+// const UserToken = Cookies.get('token');
 
-      </div>
-     );
+  return (
+    <div className="home">
+      <Homeheader />
+      <main>
+        <div className="container">
+          <Leftbar />
+          <Middle />
+          <Rightbar />
+        </div>
+      </main>
+    </div>
+  );
+
 }
 
 export default Home;

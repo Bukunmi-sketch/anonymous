@@ -32,6 +32,7 @@ function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
     const [LoginEmail, setLoginEmail] = useState(true);
+    // const [IsLoggedIn, setIsLoggedIn] = useState(true);
     // const [openSidebar, setOpenSidebar] = useState(false);
     // const [loading, setLoading] = useState(false);
 
@@ -39,7 +40,7 @@ function Login() {
         account_status: "pending", verficationbadge_status: 'zero', username: "", mobileno: "", country: "", password: "", confirmpass: "",
     });
     const [Errormsg, setErrormsg] = useState('');
-    //  const [localgov, setLga] = useState([]);
+
 
     //handle the changes
     const handleChange = (event) => {
@@ -64,7 +65,7 @@ function Login() {
         }));
         //console.log(userinputs);
 
-        const API = "http://localhost/website/xermux/Api/LoginAccount.php";
+        const API = "http://localhost/New/xermux/Api/LoginEmailAccount.php";
 
         axios
             .post(API, userinputs, {
@@ -78,6 +79,7 @@ function Login() {
                     //    setOrders(response.data);
                     console.log(response.data);
                     if (response.data.status !== 500) {
+                        Cookies.set("token", `${response.data.token}`, {expires: 1});
                         navigate(`/page/${response.data.userid} `);
                         // onClear();
                         // onUnShow();
@@ -107,7 +109,7 @@ function Login() {
         }));
         //console.log(userinputs);
 
-        const API = "http://localhost/websites/xermux/Api/LoginAccount.php";
+        const API = "http://localhost/New/xermux/Api/LoginEmailAccount.php";
 
         axios
             .post(API, userinputs, {
@@ -121,7 +123,8 @@ function Login() {
                     //    setOrders(response.data);
                     console.log(response.data);
                     if (response.data.status !== 500) {
-                        navigate(`/page/${response.data.userid} `);
+                        Cookies.set("token", `${response.data.token}`, {expires: 1});
+                        navigate(`/home `);
                         // onClear();
                         // onUnShow();
                         // unLoader();
@@ -196,7 +199,7 @@ function Login() {
 
                                 <div className="namebox">
                                     <label htmlFor="address">Password</label>
-                                    <input type={showPassword ? 'text' : 'password'} name="password" value={userinputs.password || ""} onChange={handleChange} />
+                                    <input type={showPassword ? 'text' : 'password'} placeholder="Password" name="password" value={userinputs.password || ""} onChange={handleChange} />
                                 </div>
 
                                 <div className="namebox">

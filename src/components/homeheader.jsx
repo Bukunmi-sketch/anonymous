@@ -21,18 +21,7 @@ function Homeheader() {
 
         <h2 class="logo"> Xermux </h2>
 
-        <div class="search-bar">
-          <a href="#">
-            <i class="fa fa-search"></i>
-            <input
-              type="search"
-              name=""
-              id=""
-              placeholder="search for creators and people"
-            />
-          </a>
-        </div>
-
+    
         {/* HEADER MENU FOR DESKTOP */}
         <div class="bottom-menu-nav">
           <a href="home.php" class="menu-nav" id="message-notifications" >
