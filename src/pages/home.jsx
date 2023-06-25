@@ -7,6 +7,9 @@ import Homeheader from "../components/homeheader";
 import Leftbar from "../components/leftbar";
 import Middle from "../components/middle";
 import Rightbar from "../components/rightbar";
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
+import Cookies from 'js-cookie'
+
 
 //import '../css/headermenu.css'
 import '../css/leftbar.css';

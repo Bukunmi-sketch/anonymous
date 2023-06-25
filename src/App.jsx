@@ -11,7 +11,7 @@ import './css/App.css'
 // import ActionButton from "./components/button";
 // import Footer from "./components/footer";
 //import Verify from "./pages/verify";
-// import Home from "./pages/home";
+import Home from "./pages/home";
 
 // import { FaCartPlus, FaBars, FaTimes } from "react-icons/fa";
 /*
@@ -78,7 +78,7 @@ function App() {
             {/* <Route path="/verify" element={ <Verify /> } /> */}
             <Route path="/login" element={<Login />} />
             {/* <Route path="/" element={ <> <LandingNav /> <Sectionb /> </> } /> */}
-             {/* <Route path="/home" element={ <> <Home/> </> } /> */}
+             <Route path="/home" element={ <> <Home/> </> } />
 
             {/* <Route path="/profile" element={ <> <Profile/> </> } /> */}
           </Routes>
